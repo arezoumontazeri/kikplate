@@ -51,11 +51,67 @@ docker compose exec api ./api db:seed
 
 The API is available at `http://localhost:3001` and the web UI at `http://localhost:3000`.
 
-Install the CLI to interact from a terminal:
+Install the CLI to interact from a terminal.
+
+## Install CLI
+
+### macOS/Linux via Homebrew tap
 
 ```sh
-go install github.com/your-org/kikplate/cli@latest
+brew tap kikplate/homebrew-kikplate
+brew install kikplate
+```
 
+### Windows via Scoop
+
+```powershell
+scoop bucket add kikplate https://github.com/kikplate/scoop-bucket.git
+scoop install kikplate
+```
+
+### Linux via `.deb` / `.rpm` packages (from GitHub Releases)
+
+Download the package matching your CPU architecture from [GitHub Releases](https://github.com/kikplate/kikplate/releases), then install it:
+
+```sh
+# Debian/Ubuntu
+sudo dpkg -i kikplate_<version>_amd64.deb
+
+# RHEL/Fedora/openSUSE
+sudo rpm -i kikplate_<version>_amd64.rpm
+# or, on dnf-based systems:
+sudo dnf install ./kikplate_<version>_amd64.rpm
+```
+
+### Manual install from release archives (all platforms)
+
+```sh
+# Linux/macOS
+tar -xzf kikplate-<version>-linux-amd64.tar.gz
+sudo install kikplate-<version>-linux-amd64 /usr/local/bin/kikplate
+
+# macOS example
+tar -xzf kikplate-<version>-darwin-arm64.tar.gz
+sudo install kikplate-<version>-darwin-arm64 /usr/local/bin/kikplate
+```
+
+```powershell
+# Windows (PowerShell)
+Expand-Archive .\kikplate-<version>-windows-amd64.zip -DestinationPath .
+Move-Item .\kikplate-<version>-windows-amd64.exe kikplate.exe
+# Add the folder containing kikplate.exe to PATH
+```
+
+### Build from source
+
+```sh
+go install github.com/kikplate/kikplate/cli@latest
+```
+
+Quick sanity check:
+
+```sh
+kikplate --help
 kikplate config init
 kikplate login
 kikplate search --category backend
