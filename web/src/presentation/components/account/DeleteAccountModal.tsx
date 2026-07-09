@@ -52,7 +52,7 @@ export function DeleteAccountModal({ username, onClose, onDeleted }: Props) {
         <Alert variant="destructive">
           <TriangleAlert className="h-4 w-4" />
           <AlertDescription>
-            All your plates, reviews, and data will be deleted. Other users' forks and uses of your plates will remain.
+            All your plates, reviews, and data will be deleted. Other users&apos; forks and uses of your plates will remain.
           </AlertDescription>
         </Alert>
 

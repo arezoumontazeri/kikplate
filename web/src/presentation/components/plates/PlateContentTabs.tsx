@@ -441,6 +441,7 @@ export function PlateContentTabs({
         const resolved = srcStr
           ? resolveRepoMarkdownHref(srcStr, githubRepo, branchResolved, sourceFileInRepo)
           : srcStr
+        // eslint-disable-next-line @next/next/no-img-element
         return <img {...props} src={resolved} alt={alt ?? ""} />
       },
     }),
@@ -542,7 +543,12 @@ export function PlateContentTabs({
                         {hasEnum ? (
                           <Select
                             value={downloadValues[field.key] ?? "__empty__"}
-                            onValueChange={(value) => setDownloadValues((prev) => ({ ...prev, [field.key]: value === "__empty__" ? "" : value }))}
+                            onValueChange={(value) =>
+                              setDownloadValues((prev) => ({
+                                ...prev,
+                                [field.key]: (value ?? "__empty__") === "__empty__" ? "" : (value ?? ""),
+                              }))
+                            }
                           >
                             <SelectTrigger className="h-8 w-full text-xs">
                               <SelectValue placeholder="Select value" />
@@ -559,7 +565,12 @@ export function PlateContentTabs({
                         ) : normalized === "bool" || normalized === "boolean" ? (
                           <Select
                             value={downloadValues[field.key] ?? "__empty__"}
-                            onValueChange={(value) => setDownloadValues((prev) => ({ ...prev, [field.key]: value === "__empty__" ? "" : value }))}
+                            onValueChange={(value) =>
+                              setDownloadValues((prev) => ({
+                                ...prev,
+                                [field.key]: (value ?? "__empty__") === "__empty__" ? "" : (value ?? ""),
+                              }))
+                            }
                           >
                             <SelectTrigger className="h-8 w-full text-xs">
                               <SelectValue placeholder="Select value" />

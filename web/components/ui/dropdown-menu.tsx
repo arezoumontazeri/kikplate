@@ -30,11 +30,15 @@ function DropdownMenuTrigger({
   const resolvedNativeButton = nativeButton ?? childIsNativeButton
 
   if (asChild && React.isValidElement(children)) {
+    type AsChildTriggerProps = {
+      className?: string
+    } & Record<string, unknown>
+
     return (
       <MenuPrimitive.Trigger
         data-slot="dropdown-menu-trigger"
         nativeButton={resolvedNativeButton}
-        render={React.cloneElement(children, {
+        render={React.cloneElement(children as React.ReactElement<AsChildTriggerProps>, {
           className: cn(className, (children.props as { className?: string }).className),
         })}
         {...props}

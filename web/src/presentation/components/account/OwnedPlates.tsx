@@ -391,7 +391,10 @@ export function OwnedPlates({ accountId }: { accountId: string }) {
                 <Select
                   value={selectedOrgByPlate[orgDialogPlate.id] ?? (orgDialogPlate.organization_id ?? "personal")}
                   onValueChange={(value) => {
-                    setSelectedOrgByPlate((prev) => ({ ...prev, [orgDialogPlate.id]: value }))
+                    setSelectedOrgByPlate((prev) => ({
+                      ...prev,
+                      [orgDialogPlate.id]: value ?? "personal",
+                    }))
                   }}
                   disabled={orgsLoading || (movePlateOrganization.isPending && movingId === orgDialogPlate.id)}
                 >

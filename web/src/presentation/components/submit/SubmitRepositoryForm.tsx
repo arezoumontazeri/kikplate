@@ -237,7 +237,10 @@ tags:
 
         <div className="space-y-1.5">
           <Label>Organization</Label>
-          <Select value={organizationId || "personal"} onValueChange={(value) => setOrganizationId(value === "personal" ? "" : value)}>
+          <Select
+            value={organizationId || "personal"}
+            onValueChange={(value) => setOrganizationId((value ?? "personal") === "personal" ? "" : (value ?? ""))}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Personal (no organization)" />
             </SelectTrigger>

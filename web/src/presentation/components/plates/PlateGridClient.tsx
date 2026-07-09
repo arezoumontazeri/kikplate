@@ -62,11 +62,11 @@ export function PlateGridClient({
       name: b.name,
       count: 0,
     }))
-  }, [filterOptions?.badges?.length, catalogBadges?.length])
+  }, [filterOptions?.badges, catalogBadges])
 
   const badgeLabel = useCallback(
     (slug: string) => badgeFilterOptions.find((b) => b.slug === slug)?.name ?? slug,
-    [badgeFilterOptions.length]
+    [badgeFilterOptions]
   )
 
   useEffect(() => {
